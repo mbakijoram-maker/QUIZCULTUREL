@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: kin-quiz-live
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    # Les parties sont gardées en mémoire : une seule instance.
+    numInstances: 1

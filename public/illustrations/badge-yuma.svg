@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="wood" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#B67A43"/>
+      <stop offset=".55" stop-color="#93592B"/>
+      <stop offset="1" stop-color="#6B3D1A"/>
+    </linearGradient>
+  </defs>
+  <!-- Disque de bois -->
+  <circle cx="100" cy="104" r="80" fill="url(#wood)" stroke="#2B1704" stroke-width="5"/>
+  <g fill="none" stroke="#5E3415" stroke-width="2.5" opacity=".7">
+    <path d="M36 80 Q100 70 164 84"/>
+    <path d="M28 108 Q100 96 172 112"/>
+    <path d="M38 140 Q100 128 160 146"/>
+  </g>
+  <!-- Fissure -->
+  <path d="M150 52 L136 70 L146 80 L130 96" fill="none" stroke="#2B1704" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Point d'interrogation -->
+  <path d="M74 82 Q74 52 102 52 Q130 52 130 78 Q130 96 108 104 Q100 108 100 122 L100 128" fill="none" stroke="#FAEDCD" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="100" cy="152" r="9" fill="#FAEDCD"/>
+  <!-- Goutte de sueur -->
+  <path d="M160 116 Q170 132 160 140 Q150 132 160 116 Z" fill="#9CC7E0" stroke="#2B1704" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Ruban -->
+  <path d="M40 176 L70 160 L130 160 L160 176 L130 188 L70 188 Z" fill="#E07A5F" stroke="#2B1704" stroke-width="4" stroke-linejoin="round"/>
+</svg>
