@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="16" viewBox="0 0 64 16">
+  <!-- Frise inspirée des tissus kuba : triangles imbriqués -->
+  <rect width="64" height="16" fill="#3D2314"/>
+  <path d="M0 16 L8 0 L16 16 Z" fill="#C68B59"/>
+  <path d="M16 16 L24 0 L32 16 Z" fill="#E07A5F"/>
+  <path d="M32 16 L40 0 L48 16 Z" fill="#D4A373"/>
+  <path d="M48 16 L56 0 L64 16 Z" fill="#E07A5F"/>
+  <path d="M4 16 L8 8 L12 16 Z M20 16 L24 8 L28 16 Z M36 16 L40 8 L44 16 Z M52 16 L56 8 L60 16 Z" fill="#2B1704"/>
+</svg>

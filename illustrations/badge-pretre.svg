@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200">
+  <defs>
+    <path id="ray" d="M100 2 L109 40 L91 40 Z"/>
+    <radialGradient id="gold" cx=".4" cy=".35" r=".75">
+      <stop offset="0" stop-color="#F6DCA4"/>
+      <stop offset=".6" stop-color="#D4A373"/>
+      <stop offset="1" stop-color="#9A6A2C"/>
+    </radialGradient>
+  </defs>
+  <!-- Rayons solaires -->
+  <g fill="#D4A373" stroke="#2B1704" stroke-width="2.5" stroke-linejoin="round">
+    <use xlink:href="#ray"/>
+    <use xlink:href="#ray" transform="rotate(22.5 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(45 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(67.5 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(90 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(112.5 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(135 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(157.5 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(180 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(202.5 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(225 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(247.5 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(270 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(292.5 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(315 100 100)"/>
+    <use xlink:href="#ray" transform="rotate(337.5 100 100)"/>
+  </g>
+  <!-- Médaillon -->
+  <circle cx="100" cy="100" r="64" fill="url(#gold)" stroke="#2B1704" stroke-width="5"/>
+  <circle cx="100" cy="100" r="52" fill="#E07A5F" stroke="#2B1704" stroke-width="3"/>
+  <g fill="#FAEDCD">
+    <circle cx="100" cy="42" r="3"/><circle cx="158" cy="100" r="3"/><circle cx="100" cy="158" r="3"/><circle cx="42" cy="100" r="3"/>
+    <circle cx="141" cy="59" r="3"/><circle cx="141" cy="141" r="3"/><circle cx="59" cy="141" r="3"/><circle cx="59" cy="59" r="3"/>
+  </g>
+  <!-- Étoile du drapeau congolais -->
+  <path d="M100 62 L109.5 90.5 L139.5 90.8 L115.4 108.7 L124.5 137.2 L100 119.8 L75.5 137.2 L84.6 108.7 L60.5 90.8 L90.5 90.5 Z" fill="#F7D046" stroke="#2B1704" stroke-width="4" stroke-linejoin="round"/>
+</svg>
