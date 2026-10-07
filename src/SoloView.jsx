@@ -741,19 +741,34 @@ const VERDICTS = {
 
 const TYPE_LABEL = { choice: null, tf: 'Vrai ou faux ?', image: 'Reconnais l’œuvre' };
 
-function QuestionPanel({ question, result, isLast, onAnswer, onNext }) {
-  const [deadline] = useState(() => performance.now() + QUESTION_DURATION_MS);
-  const live = useCountdown(result ? null : deadline);
-  // Une fois la réponse donnée, le chrono se fige sur le temps de réponse.
-  const elapsedMs = result ? result.elapsedMs : live.elapsedMs;
-  const remainingMs = QUESTION_DURATION_MS - elapsedMs;
+/** Chrono + points en jeu : seul ce petit bloc se redessine à chaque tic. */
+function LiveClock({ deadline }) {
+  const { remainingMs, elapsedMs } = useCountdown(deadline);
   const points = pointsForElapsed(elapsedMs);
   const nextDropIn = Math.ceil((TIER_DURATION_MS - (elapsedMs % TIER_DURATION_MS)) / 1000);
+  return (
+    <div className="flex items-center gap-3 rounded-xl bg-kin-night/90 py-1.5 pl-4 pr-1.5">
+      <div className="text-right leading-tight">
+        <span className="block font-num text-3xl text-kin-gold">{points}</span>
+        <span className="block text-[0.7rem] font-semibold text-kin-cream/70">
+          {points > 10 ? `pts · ${points - 10} dans ${nextDropIn} s` : 'pts en jeu'}
+        </span>
+      </div>
+      <TimerRing remainingMs={remainingMs} size={58} stroke={5} />
+    </div>
+  );
+}
+
+function QuestionPanel({ question, result, isLast, onAnswer, onNext }) {
+  const [deadline] = useState(() => performance.now() + QUESTION_DURATION_MS);
   const isTf = question.type === 'tf';
 
+  // Une seule minuterie pour le temps écoulé, au lieu de vérifier à chaque tic.
   useEffect(() => {
-    if (!result && live.remainingMs <= 0) onAnswer(TIMEOUT);
-  }, [live.remainingMs, result, onAnswer]);
+    if (result) return undefined;
+    const id = setTimeout(() => onAnswer(TIMEOUT), Math.max(0, deadline - performance.now()));
+    return () => clearTimeout(id);
+  }, [result, deadline, onAnswer]);
 
   const choose = (choice) => {
     if (result) return;
@@ -793,15 +808,7 @@ function QuestionPanel({ question, result, isLast, onAnswer, onNext }) {
               </span>
             </span>
           ) : (
-            <div className="flex items-center gap-3 rounded-xl bg-kin-night/90 py-1.5 pl-4 pr-1.5">
-              <div className="text-right leading-tight">
-                <span className="block font-num text-3xl text-kin-gold">{points}</span>
-                <span className="block text-[0.7rem] font-semibold text-kin-cream/70">
-                  {points > 10 ? `pts · ${points - 10} dans ${nextDropIn} s` : 'pts en jeu'}
-                </span>
-              </div>
-              <TimerRing remainingMs={remainingMs} size={58} stroke={5} />
-            </div>
+            <LiveClock deadline={deadline} />
           )}
         </div>
         <div className={`relative z-10 ${question.type === 'image' ? 'grid items-center gap-5 sm:grid-cols-[9rem_minmax(0,1fr)]' : ''}`}>

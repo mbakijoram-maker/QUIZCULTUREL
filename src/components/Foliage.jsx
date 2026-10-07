@@ -2,13 +2,13 @@
 // Illustrations botaniques CC0 (rawpixel, domaine public), arrière-plan supprimé.
 
 const PLANT = {
-  palm: '/plants/palm-botanical.webp',
-  monstera: '/plants/monstera.webp',
-  fronds: '/plants/fronds-fern.webp',
-  ravenala: '/plants/ravenala.webp',
-  fern: '/plants/fern-leaf.webp',
-  banana: '/plants/banana.webp',
-  elephantEar: '/plants/elephant-ear.webp',
+  palm: 'plants/palm-botanical.webp',
+  monstera: 'plants/monstera.webp',
+  fronds: 'plants/fronds-fern.webp',
+  ravenala: 'plants/ravenala.webp',
+  fern: 'plants/fern-leaf.webp',
+  banana: 'plants/banana.webp',
+  elephantEar: 'plants/elephant-ear.webp',
 };
 
 // Sur les bords de l'écran (fixes, au-dessus du contenu, sans bloquer les clics).

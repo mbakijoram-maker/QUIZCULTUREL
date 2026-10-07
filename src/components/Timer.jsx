@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { POINT_TIERS, QUESTION_DURATION_MS, TIER_DURATION_MS, pointsForElapsed } from '../../shared/scoring.js';
 
-/** Compte à rebours basé sur une échéance locale (performance.now()). */
-export function useCountdown(deadline, durationMs = QUESTION_DURATION_MS) {
+/**
+ * Compte à rebours basé sur une échéance locale (performance.now()).
+ * 4 mises à jour par seconde suffisent : les secondes et les paliers de points
+ * changent bien plus lentement, et chaque mise à jour a un coût de rendu.
+ */
+export function useCountdown(deadline, durationMs = QUESTION_DURATION_MS, intervalMs = 250) {
   const [now, setNow] = useState(() => performance.now());
 
   useEffect(() => {
@@ -12,9 +16,9 @@ export function useCountdown(deadline, durationMs = QUESTION_DURATION_MS) {
       const t = performance.now();
       setNow(t);
       if (t >= deadline) clearInterval(id);
-    }, 100);
+    }, intervalMs);
     return () => clearInterval(id);
-  }, [deadline]);
+  }, [deadline, intervalMs]);
 
   const remainingMs = deadline == null ? durationMs : Math.max(0, deadline - now);
   return { remainingMs, elapsedMs: durationMs - remainingMs };
@@ -46,7 +50,6 @@ export function TimerRing({ remainingMs, durationMs = QUESTION_DURATION_MS, size
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={circumference * (1 - fraction)}
-          style={{ transition: 'stroke-dashoffset 100ms linear, stroke 200ms' }}
         />
       </svg>
       <span

@@ -4,7 +4,7 @@ import { MASKS, MASK_SOURCE } from '../masks.js';
 // Photos de masques détourées (public/masks) ; le djembé reste une illustration SVG.
 export const ILLUSTRATIONS = {
   masque: MASKS['pende-gambanda'].src,
-  djembe: '/illustrations/djembe.svg',
+  djembe: 'illustrations/djembe.svg',
   pretre: MASKS['songye-nkishi'].src,
   yuma: MASKS['bembe-emangungu'].src,
 };
@@ -37,7 +37,7 @@ export function MaskFigure({ name, className = '', caption = false, decorative =
           aria-hidden={decorative || undefined}
           draggable={false}
           style={still ? undefined : { animationDelay: delayFor(name) }}
-          className={`relative z-10 max-h-full max-w-full select-none object-contain drop-shadow-[0_28px_32px_rgba(0,0,0,0.6)] ${still ? '' : 'totem'}`}
+          className={`relative z-10 max-h-full max-w-full select-none object-contain ${still ? '' : 'totem'}`}
         />
       </div>
       {caption && (

@@ -23,10 +23,12 @@ La version solo est publiée depuis la branche `gh-pages` du dépôt.
 Pour redéployer après une modification :
 
 ```
-npm run build:solo
+npm run build:pages
 ```
 
-Puis poussez le contenu de `build/site/` (`index.html` et `.nojekyll`) sur la branche `gh-pages`. GitHub Pages ne sert que des fichiers statiques : la version multijoueur, qui a besoin du serveur Node, doit être hébergée ailleurs (voir « Mise en ligne (Render) »).
+Puis poussez le contenu de `dist-solo/` sur la branche `gh-pages`. Les images y sont des fichiers séparés, ce qui permet au navigateur de les mettre en cache. Pour tester en local exactement comme sur GitHub : `node scripts/preview-pages.mjs`, puis ouvrez http://localhost:4173/QUIZCULTUREL/.
+
+`npm run build:solo` produit quant à lui une page unique tout-en-un (`build/kin-quiz-solo.html`), pratique à partager comme simple fichier, mais plus lourde à charger. GitHub Pages ne sert que des fichiers statiques : la version multijoueur, qui a besoin du serveur Node, doit être hébergée ailleurs (voir « Mise en ligne (Render) »).
 
 ## En local
 

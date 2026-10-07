@@ -40,24 +40,3 @@ const out = path.join(root, 'build', 'kin-quiz-solo.html');
 writeFileSync(out, html);
 console.log(`Page solo autonome : ${path.relative(root, out)} (${(html.length / 1024).toFixed(0)} Ko)`);
 
-// Version site statique (GitHub Pages, Netlify…) : document HTML complet + .nojekyll.
-const siteDir = path.join(root, 'build', 'site');
-mkdirSync(siteDir, { recursive: true });
-const favicon = dataUri('masks', 'pende-gambanda.webp');
-writeFileSync(
-  path.join(siteDir, 'index.html'),
-  `<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Le grand quiz de la culture congolaise : 4 tours de questions sur l’histoire, la musique, la nature et les masques du Congo.">
-<link rel="icon" type="image/webp" href="${favicon}">
-</head>
-<body style="margin:0">
-${html}</body>
-</html>
-`,
-);
-writeFileSync(path.join(siteDir, '.nojekyll'), '');
-console.log(`Site statique : ${path.relative(root, siteDir)}${path.sep}index.html`);

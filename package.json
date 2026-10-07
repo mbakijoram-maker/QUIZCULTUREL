@@ -8,7 +8,8 @@
     "dev": "concurrently -k -n server,web -c yellow,cyan \"node --watch server.js\" \"vite\"",
     "build": "vite build",
     "build:solo": "vite build -c vite.solo.config.js && node scripts/build-solo.mjs",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:pages": "vite build -c vite.solo.config.js && node scripts/finish-pages.mjs"
   },
   "engines": {
     "node": ">=18.17"
